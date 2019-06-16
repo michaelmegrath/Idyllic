@@ -2,17 +2,16 @@
 #include "initializer.h"
 
 
-using namespace std;
 
 
 
-int main(int argc, char* argv[]){
+int main(){
     SDL_Init(SDL_INIT_EVERYTHING); //Put in Initalizer
 
     InitializeIdyllic engine;
     SDL_Event windowEvent;
-    
-    
+
+
     Uint32 starting_tick; // Put in Initalizer
     bool running = true;
     while(running){
@@ -24,8 +23,8 @@ int main(int argc, char* argv[]){
             }
         }
         engine.capFps(starting_tick);
-        
+
     }
     engine.~InitializeIdyllic();
-    return EXIT_SUCCESS;
+    return 1;
 }

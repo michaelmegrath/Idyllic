@@ -7,10 +7,19 @@
 //
 
 #include <stdio.h>
+#include <string.h>
 #include "initializer.h"
-using namespace std;
+
+
+
 
 InitializeIdyllic::InitializeIdyllic(){
+    fps = 30;
+    window_width = 800;
+    window_height = 600;
+
+    strcpy(window_name, "Idyllic Instance");
+    window = NULL;
     makeWindow(); //Handle return value
 }
 
@@ -30,10 +39,10 @@ InitializeIdyllic::~InitializeIdyllic(){
 int InitializeIdyllic::makeWindow(){
     window = SDL_CreateWindow(window_name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_width, window_height, SDL_WINDOW_ALLOW_HIGHDPI);
     if(window == NULL){
-        cout<<"Could not create a window"<<endl<<SDL_GetError()<<endl;
+        std::cout<<"Could not create a window"<<std::endl<<SDL_GetError()<<std::endl;
         return 0;
     }
-    
+
     return 1;
 }
 
@@ -53,6 +62,3 @@ void InitializeIdyllic::capFps(Uint32 starting_tick){
         SDL_Delay(1000/fps - (SDL_GetTicks()-starting_tick));
     }
 }
-
-
-
