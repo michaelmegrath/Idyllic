@@ -6,8 +6,7 @@
 //  Copyright © 2019 Michael Megrath. All rights reserved.
 //
 
-#include <stdio.h>
-#include <string.h>
+
 #include "initializer.h"
 
 

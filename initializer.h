@@ -5,6 +5,8 @@
 //  Created by Michael Megrath on 6/12/19.
 //  Copyright © 2019 Michael Megrath. All rights reserved.
 //
+#include <stdio.h>
+#include <string.h>
 #include <iostream>
 #include <SDL2/SDL.h>
 
@@ -30,10 +32,10 @@ class InitializeIdyllic {
         SDL_Event windowEvent;
 
     private:
-        static int fps;
-        static int window_width;
-        static int window_height;
-        static char window_name[32];
+        int fps;
+        int window_width;
+        int window_height;
+        char window_name[32];
 
 
 };
