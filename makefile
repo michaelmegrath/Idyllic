@@ -1,21 +1,23 @@
 CXX = g++
-CXXFLAGS = -Wall
+CXXFLAGS = -c -Wall
+LDLIBS = -l SDL2-2.0.0
+
 
 Idyllic: eventHandler.o initializer.o main.o
-	$(CXX)  -o Idyllic eventHandler.o initializer.o main.o -l SDL2-2.0.0
+	$(CXX)  -o Idyllic eventHandler.o initializer.o main.o $(LDLIBS)
 
 
 main.o: main.cpp
-	$(CXX) -c main.cpp
+	$(CXX) $(CXXFLAGS) main.cpp
 
 
 eventHandler.o: eventHandler.cpp eventHandler.h
-	$(CXX) -c eventHandler.cpp
+	$(CXX) $(CXXFLAGS) eventHandler.cpp
 
 
 initializer.o: initializer.cpp initializer.h
-	$(CXX) -c initializer.cpp
+	$(CXX) $(CXXFLAGS) initializer.cpp
 
 
 clean:
-	rm *.o
+	rm *.o Idyllic

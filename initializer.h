@@ -5,7 +5,7 @@
 //  Created by Michael Megrath on 6/12/19.
 //  Copyright © 2019 Michael Megrath. All rights reserved.
 //
-
+#include <SDL2/SDL.h>
 #include "eventHandler.h"
 
 

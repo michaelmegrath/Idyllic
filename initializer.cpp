@@ -24,7 +24,7 @@ InitializeIdyllic::InitializeIdyllic(){
 
 
 //Destructor------------------------------------
-InitializeIdyllic::~InitializeIdyllic
+InitializeIdyllic::~InitializeIdyllic(){
     windowEvents.~EventHandler();
     SDL_DestroyWindow(window);
     SDL_Quit();
