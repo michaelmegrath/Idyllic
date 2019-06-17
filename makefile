@@ -2,7 +2,7 @@ CC = g++
 
 
 Idyllic: eventHandler.o initializer.o main.o
-	$(CC) eventHandler.o initializer.o main.o -o Idyllic
+	$(CC) eventHandler.o initializer.o main.o -o Idyllic -l SDL2-2.0.0
 
 
 main.o: main.cpp
