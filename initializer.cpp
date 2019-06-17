@@ -11,29 +11,28 @@
 
 
 
-
+//Constructor---------------------------------
 InitializeIdyllic::InitializeIdyllic(){
+    SDL_Init(SDL_INIT_EVERYTHING);
     fps = 30;
     window_width = 800;
     window_height = 600;
-
     strcpy(window_name, "Idyllic Instance");
     window = NULL;
     makeWindow(); //Handle return value
-}
+}//--------------------------------------------
 
 
-InitializeIdyllic::InitializeIdyllic(int width,int height, char* name){
-    changeWindow(width, height);
-    strcpy(window_name, name);
-    InitializeIdyllic();
-}
-
-
-InitializeIdyllic::~InitializeIdyllic(){
+//Destructor------------------------------------
+InitializeIdyllic::~InitializeIdyllic
+    windowEvents.~EventHandler();
     SDL_DestroyWindow(window);
     SDL_Quit();
-}
+}//---------------------------------------------
+
+
+
+
 
 int InitializeIdyllic::makeWindow(){
     window = SDL_CreateWindow(window_name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_width, window_height, SDL_WINDOW_ALLOW_HIGHDPI);
@@ -51,13 +50,28 @@ void InitializeIdyllic::changeWindow(int width, int height){
     return;
 }
 
+
+
+
+
+
 void InitializeIdyllic::setFps(int newFps){
     fps = newFps;
     return;
 }
 
-void InitializeIdyllic::capFps(Uint32 starting_tick){
+void InitializeIdyllic::capFps(){
     if( (1000/fps) > SDL_GetTicks() - starting_tick ){
         SDL_Delay(1000/fps - (SDL_GetTicks()-starting_tick));
     }
+    starting_tick = SDL_GetTicks();
+}
+
+
+
+int InitializeIdyllic::checkEvent(){
+    if(windowEvents.getEvent())
+      return windowEvents.returnEvent();//Check Documentation for return codes
+    else
+      return -1;
 }
