@@ -7,7 +7,7 @@
 //
 #include <SDL2/SDL.h>
 #include "eventHandler.h"
-
+#include "screen.h"
 
 
 
@@ -19,19 +19,28 @@ class InitializeIdyllic {
         InitializeIdyllic();
         ~InitializeIdyllic();
 
+
         int makeWindow();
         void changeWindow(int width, int height);
+
 
         void setFps(int newFps);
         void capFps();
 
+
         int checkEvent();
 
 
+        void setScreen();
+        int updateScreen();
+        int drawObject();
+        int createObject();
 
 
         SDL_Window* window;
+
     private:
+        Screen screen;
         EventHandler windowEvents;
         Uint32 starting_tick;
         int fps;

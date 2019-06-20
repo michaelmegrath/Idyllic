@@ -20,12 +20,14 @@ InitializeIdyllic::InitializeIdyllic(){
     strcpy(window_name, "Idyllic Instance");
     window = NULL;
     makeWindow(); //Handle return value
+
 }//--------------------------------------------
 
 
 //Destructor------------------------------------
 InitializeIdyllic::~InitializeIdyllic(){
     windowEvents.~EventHandler();
+    screen.~Screen();
     SDL_DestroyWindow(window);
     SDL_Quit();
 }//---------------------------------------------
@@ -33,7 +35,7 @@ InitializeIdyllic::~InitializeIdyllic(){
 
 
 
-
+//Make Window-----------------------------------
 int InitializeIdyllic::makeWindow(){
     window = SDL_CreateWindow(window_name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_width, window_height, SDL_WINDOW_ALLOW_HIGHDPI);
     if(window == NULL){
@@ -42,13 +44,15 @@ int InitializeIdyllic::makeWindow(){
     }
 
     return 1;
-}
+}//-----------------------------------------------
 
+
+//Change Window size-------------------------------
 void InitializeIdyllic::changeWindow(int width, int height){
     window_width = width;
     window_height = height;
     return;
-}
+}//------------------------------------------------
 
 
 
