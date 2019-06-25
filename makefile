@@ -1,10 +1,10 @@
 CXX = g++
 CXXFLAGS = -c -Wall
 LDLIBS = -l SDL2-2.0.0
+OBJECTS = eventHandler.o initializer.o main.o screen.o object.o
 
-
-Idyllic: eventHandler.o initializer.o main.o screen.o
-	$(CXX)  -o Idyllic eventHandler.o initializer.o screen.o main.o $(LDLIBS)
+Idyllic: $(OBJECTS)
+	$(CXX)  -o Idyllic $(OBJECTS) $(LDLIBS)
 
 
 main.o: main.cpp
@@ -20,6 +20,10 @@ initializer.o: initializer.cpp initializer.h
 
 screen.o: screen.cpp screen.h
 	$(CXX) $(CXXFLAGS) screen.cpp
+
+object.o: object.cpp object.h
+	$(CXX) $(CXXFLAGS) object.cpp
+
 
 
 clean:

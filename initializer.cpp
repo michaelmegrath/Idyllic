@@ -26,9 +26,10 @@ InitializeIdyllic::InitializeIdyllic(){
 
 //Destructor------------------------------------
 InitializeIdyllic::~InitializeIdyllic(){
+    std::cout<<"Destructor Initialized "<<std::endl;
+    SDL_DestroyWindow(window);
     windowEvents.~EventHandler();
     screen.~Screen();
-    SDL_DestroyWindow(window);
     SDL_Quit();
 }//---------------------------------------------
 

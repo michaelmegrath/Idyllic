@@ -19,7 +19,6 @@ int EventHandler::getEvent(){
 
 int EventHandler::returnEvent(){
     if(SDL_QUIT == windowEvent.type){
-        std::cout<<"Quit"<<std::endl;
         return 0;
     }
     else

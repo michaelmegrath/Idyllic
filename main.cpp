@@ -8,12 +8,14 @@ int main(){
     bool running = true;
     while(running){
         int event = engine.checkEvent();
-        if(event == -1){}
-        else if(event == 0){
-            running = false;
+        if(event == 0){
+            //std::cout<<"Ending window"<<std::endl;
             engine.~InitializeIdyllic();
+            //std::cout<<"Ended Window"<<std::endl;
+            running = false;
             break;
         }
+        else if(event == -1){}
         else{}
         engine.capFps();
     }
