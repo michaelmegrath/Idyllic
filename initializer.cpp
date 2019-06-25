@@ -72,6 +72,14 @@ void InitializeIdyllic::capFps(){
     starting_tick = SDL_GetTicks();
 }
 
+void InitializeIdyllic::setScreen(){
+    screen.setRender(window);
+}
+
+
+
+
+
 
 
 int InitializeIdyllic::checkEvent(){
