@@ -7,6 +7,7 @@ int main(){
     InitializeIdyllic engine;
     engine.setScreen();
     bool running = true;
+    
     while(running){
         int event = engine.checkEvent();
         if(event == 0){

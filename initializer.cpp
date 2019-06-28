@@ -14,9 +14,9 @@
 //Constructor---------------------------------
 InitializeIdyllic::InitializeIdyllic(){
     SDL_Init(SDL_INIT_EVERYTHING);
-    fps = 30;
-    window_width = 800;
-    window_height = 600;
+    fps = 30;//Make Constant
+    window_width = 800;//Make constant
+    window_height = 600;//Make Constant
     strcpy(window_name, "Idyllic Instance");
     window = NULL;
     makeWindow(); //Handle return value
@@ -38,7 +38,7 @@ InitializeIdyllic::~InitializeIdyllic(){
 
 //Make Window-----------------------------------
 int InitializeIdyllic::makeWindow(){
-    window = SDL_CreateWindow(window_name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window_width, window_height, SDL_WINDOW_ALLOW_HIGHDPI);
+    window = SDL_CreateWindow(window_name, SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_SHOWN);
     if(window == NULL){
         std::cout<<"Could not create a window"<<std::endl<<SDL_GetError()<<std::endl;
         return 0;
@@ -74,6 +74,7 @@ void InitializeIdyllic::capFps(){
 
 void InitializeIdyllic::setScreen(){
     screen.setRender(window);
+    screen.createObjects();
 }
 
 

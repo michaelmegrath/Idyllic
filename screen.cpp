@@ -1,12 +1,21 @@
+
 #include "screen.h"
 
 
 Screen::Screen(){
-
+  starting_x = 400;//Fill in with constant and logic
+  starting_y = 50;//Fill in with constant and logic
+  object_width = 5;
+  object_height = 5;
 }
 
 Screen::~Screen(){
-
+  if(objectList.size()==0){
+    std::cout<<"Nothing in vector"<<std::endl;
+  }
+  else{
+    objectList.clear();
+  }
 }
 
 int Screen::setRender(SDL_Window* window){
@@ -16,4 +25,13 @@ int Screen::setRender(SDL_Window* window){
   SDL_RenderClear(renderer);
   SDL_RenderPresent(renderer);
   return 1;
+}
+
+void Screen::createObjects(){
+  objectList.push_back(new DrawnObject());
+  objectList[objectList.size()-1]->load(renderer,
+                                       starting_x, starting_y,
+                                       object_width, object_height);
+
+  objectList[objectList.size()-1]->display(renderer);
 }
