@@ -2,11 +2,9 @@
 
 
 EventHandler::EventHandler(){
-
 }
 
 EventHandler::~EventHandler(){
-
 }
 
 

@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -c -Wall
+CXXFLAGS = -c -Wall -g
 LDLIBS = -l SDL2-2.0.0
 OBJECTS = eventHandler.o initializer.o main.o screen.o object.o
 

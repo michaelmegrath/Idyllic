@@ -7,13 +7,11 @@ int main(){
     InitializeIdyllic engine;
     engine.setScreen();
     bool running = true;
-    
+
     while(running){
         int event = engine.checkEvent();
         if(event == 0){
-            //std::cout<<"Ending window"<<std::endl;
-            engine.~InitializeIdyllic();
-            //std::cout<<"Ended Window"<<std::endl;
+
             running = false;
             break;
         }
@@ -21,6 +19,5 @@ int main(){
         else{}
         engine.capFps();
     }
-    engine.~InitializeIdyllic();
     return 1;
 }

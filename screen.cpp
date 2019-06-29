@@ -10,12 +10,7 @@ Screen::Screen(){
 }
 
 Screen::~Screen(){
-  if(objectList.size()==0){
-    std::cout<<"Nothing in vector"<<std::endl;
-  }
-  else{
-    objectList.clear();
-  }
+
 }
 
 int Screen::setRender(SDL_Window* window){
@@ -28,10 +23,10 @@ int Screen::setRender(SDL_Window* window){
 }
 
 void Screen::createObjects(){
-  objectList.push_back(new DrawnObject());
-  objectList[objectList.size()-1]->load(renderer,
+  objectList.resize(30);
+  objectList[objectList.size()-1].load(renderer,
                                        starting_x, starting_y,
                                        object_width, object_height);
 
-  objectList[objectList.size()-1]->display(renderer);
+  objectList[objectList.size()-1].display(renderer);
 }

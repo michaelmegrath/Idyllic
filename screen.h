@@ -11,7 +11,7 @@ class Screen {
 
 
     private:
-      std::vector <Object*> objectList;
+      std::vector <Object> objectList;
       SDL_Renderer* renderer;
       SDL_Window* window;
       int starting_x;
