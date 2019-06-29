@@ -20,8 +20,8 @@ class InitializeIdyllic {
         ~InitializeIdyllic();
 
 
-        int makeWindow();
-        void changeWindow(int width, int height);
+        int initWindow();
+        void resizeWindow(int width, int height);
 
 
         void setFps(int newFps);
@@ -31,15 +31,17 @@ class InitializeIdyllic {
         int checkEvent();
 
 
-        void setScreen();
-        int updateScreen();
-        int drawObject();
-        int createObject();
+        void initScreen();
+        void refresh();
 
 
-        SDL_Window* window;
+        int createObjects();
+
+
 
     private:
+        SDL_Window* window;
+        SDL_Renderer* renderer;
         Screen screen;
         EventHandler windowEvents;
         Uint32 starting_tick;

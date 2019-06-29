@@ -19,7 +19,8 @@ InitializeIdyllic::InitializeIdyllic(){
     window_height = 600;//Make Constant
     strcpy(window_name, "Idyllic Instance");
     window = NULL;
-    makeWindow(); //Handle return value
+    initWindow(); //Handle return value
+    initScreen();
 }//--------------------------------------------
 
 
@@ -33,23 +34,21 @@ InitializeIdyllic::~InitializeIdyllic(){
 
 
 //Make Window-----------------------------------
-int InitializeIdyllic::makeWindow(){
+int InitializeIdyllic::initWindow(){
 
     window = SDL_CreateWindow(window_name, SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_SHOWN);
     if(window == NULL){
         return 0;
     }
-
+    renderer = SDL_CreateRenderer(window,-1,0);
     return 1;
 }//-----------------------------------------------
 
 
 //Change Window size-------------------------------
-void InitializeIdyllic::changeWindow(int width, int height){
-
+void InitializeIdyllic::resizeWindow(int width, int height){
     window_width = width;
     window_height = height;
-
     return;
 }//------------------------------------------------
 
@@ -70,11 +69,20 @@ void InitializeIdyllic::capFps(){
     starting_tick = SDL_GetTicks();
 }
 
-void InitializeIdyllic::setScreen(){
-    screen.setRender(window);
+void InitializeIdyllic::initScreen(){
+    screen.setRender(renderer);
     screen.createObjects();
 }
 
+void InitializeIdyllic::refresh(){
+    screen.drawBackground();
+    screen.drawObjects();
+    SDL_RenderPresent(renderer);
+}
+
+int InitializeIdyllic::createObjects(){
+    return screen.createObjects();
+}
 
 
 

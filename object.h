@@ -1,18 +1,36 @@
 #include <SDL2/SDL.h>
-#include <iostream>
+#include "brain.h"
+
 
 class Object{
   public:
     Object();
     Object(const Object& old_obj);
     ~Object();
-    void load(SDL_Renderer* renderer,
-                      int x, int y, int w, int h);
     void display(SDL_Renderer* renderer);
 
   protected:
-    int pos_x;
-    int pos_y;
     SDL_Rect obj;
+
+};
+
+
+
+class Dot : public Object{
+  public:
+    Dot();
+    Dot(const Dot& old_obj);
+    ~Dot();
+    void move();
+    void limit(float (&velo)[2],int limit);
+
+  private:
+    float vel[2];
+    float acc[2];
+    Brain* brain;
+};
+
+
+class Zone : public Object{
 
 };

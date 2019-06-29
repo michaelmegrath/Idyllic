@@ -5,7 +5,6 @@
 
 int main(){
     InitializeIdyllic engine;
-    engine.setScreen();
     bool running = true;
 
     while(running){
@@ -17,6 +16,7 @@ int main(){
         }
         else if(event == -1){}
         else{}
+        engine.refresh();
         engine.capFps();
     }
     return 1;

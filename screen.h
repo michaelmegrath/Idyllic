@@ -6,16 +6,15 @@ class Screen {
     public:
       Screen();
       ~Screen();
-      int setRender(SDL_Window* window);
-      void createObjects();
+      int setRender(SDL_Renderer* renderer);
+      void drawBackground();
+      void drawObjects();
+      int createObjects();
+
 
 
     private:
-      std::vector <Object> objectList;
+      std::vector <Dot> DotList;
       SDL_Renderer* renderer;
-      SDL_Window* window;
-      int starting_x;
-      int starting_y;
-      int object_width;
-      int object_height;
+
 };
