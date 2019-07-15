@@ -12,6 +12,7 @@ class Brain{
     Brain();
     ~Brain();
     void randomize();
+
     float randmm(float min, float max);
 
     double** directions;

@@ -6,6 +6,7 @@ Brain::Brain(int size){
     directions[i] = new double[2];
   }
   randomize();
+
 }
 
 float Brain::randmm(float min, float max)
@@ -20,8 +21,11 @@ float Brain::randmm(float min, float max)
      return min + (float)rand() / ((float)RAND_MAX / (max - min));
 }
 
+
+
+
 void Brain::randomize(){
-  for(int i = 0;i<sizeof(directions);i++){
+  for(int i = 0;i<400;i++){//Convert to const
     double angle = randmm(0.0,(2*PI));
     if(!angle)
       angle = randmm(0.0,(2*PI));
