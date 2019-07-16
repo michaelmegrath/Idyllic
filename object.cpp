@@ -56,11 +56,12 @@ void Dot::limit(float (&velo)[2],int limit){
 }
 
 void Dot::move(){
-  acc[0] = brain->directions[brain->step][0];// std::cout << acc[0] << '\n';
-  acc[1] = brain->directions[brain->step][1];
-  //std::cout << acc[0]<<acc[1] << '\n';
-  brain->step++;
-  vel[0] += acc[0]; vel[1] += acc[1];
-  limit(vel,5);
+  if(brain->step < 400){
+    acc[0] = brain->directions[brain->step][0];
+    acc[1] = brain->directions[brain->step][1];
+    brain->step++;
+    vel[0] += acc[0]; vel[1] += acc[1];
+    limit(vel,5);
+  }
   obj.x += vel[0]; obj.y += vel[1];
 }
