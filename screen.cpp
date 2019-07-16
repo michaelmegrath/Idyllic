@@ -12,6 +12,7 @@ Screen::~Screen(){
 
 int Screen::setRender(SDL_Renderer* renderer){
   this->renderer = renderer;
+  std::cout << renderer << '\n';
   return 1;
 }
 
@@ -22,15 +23,13 @@ void Screen::drawBackground(){
 
 int Screen::createObjects(){
   int size = 50;
-  DotList.resize(size);
+  dotPop = new Population(size,renderer);
   return size;
 }
 
 
 
 void Screen::drawObjects(){
-  for(int i = 0;i<DotList.size();i++){
-    DotList[i].update();
-    DotList[i].display(renderer);
-  }
+  dotPop->show();
+  dotPop->update();
 }

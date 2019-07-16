@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
 #include <vector>
-#include "object.h"
+#include "population.h"
 
 class Screen {
     public:
@@ -14,7 +14,8 @@ class Screen {
 
 
     private:
-      std::vector <Dot> DotList;
+      //std::vector <Dot> DotList;
+      Population* dotPop;
       SDL_Renderer* renderer;
 
 };

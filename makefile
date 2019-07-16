@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -c -Wall -g
 LDLIBS = -l SDL2-2.0.0
-OBJECTS = eventHandler.o initializer.o main.o screen.o object.o brain.o
+OBJECTS = eventHandler.o initializer.o main.o screen.o object.o brain.o population.o
 
 Idyllic: $(OBJECTS)
 	$(CXX)  -o Idyllic $(OBJECTS) $(LDLIBS)
@@ -27,5 +27,7 @@ object.o: object.cpp object.h
 brain.o: brain.cpp brain.h
 	$(CXX) $(CXXFLAGS) brain.cpp
 
+population.o: population.cpp population.h
+	$(CXX) $(CXXFLAGS) population.cpp
 clean:
 	rm *.o Idyllic
