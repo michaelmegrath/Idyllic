@@ -74,5 +74,8 @@ void Dot::move(){
 void Dot::update(){
   if(!dead){
     move();
+    if(obj.x<2 || obj.y<2){
+      dead = true;
+    }
   }
 }
