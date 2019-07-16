@@ -21,7 +21,7 @@ void Screen::drawBackground(){
 }
 
 int Screen::createObjects(){
-  int size = 5;
+  int size = 50;
   DotList.resize(size);
   return size;
 }
@@ -30,7 +30,7 @@ int Screen::createObjects(){
 
 void Screen::drawObjects(){
   for(int i = 0;i<DotList.size();i++){
-    DotList[i].move();
+    DotList[i].update();
     DotList[i].display(renderer);
   }
 }

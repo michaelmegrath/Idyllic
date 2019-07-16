@@ -32,6 +32,7 @@ Dot::Dot(){
   vel[0] = 0; vel[1] = 0;
   acc[0] = 0; acc[1] = 0;
   brain = new Brain(400);
+  dead = false;
 }
 
 Dot::~Dot(){
@@ -60,8 +61,18 @@ void Dot::move(){
     acc[0] = brain->directions[brain->step][0];
     acc[1] = brain->directions[brain->step][1];
     brain->step++;
-    vel[0] += acc[0]; vel[1] += acc[1];
-    limit(vel,5);
   }
+  else{
+    dead = true;
+  }
+  vel[0] += acc[0]; vel[1] += acc[1];
+  limit(vel,5);
   obj.x += vel[0]; obj.y += vel[1];
+}
+
+
+void Dot::update(){
+  if(!dead){
+    move();
+  }
 }

@@ -23,11 +23,13 @@ class Dot : public Object{
     ~Dot();
     void move();
     void limit(float (&velo)[2],int limit);
+    void update();
 
   private:
     float vel[2];
     float acc[2];
     Brain* brain;
+    bool dead;
 };
 
 
