@@ -3,7 +3,8 @@
 
 
 Screen::Screen(){
-
+  showStats = false;
+  std::cout << "Initialized screen" << '\n';
 }
 
 Screen::~Screen(){
@@ -31,4 +32,10 @@ int Screen::createObjects(){
 void Screen::drawObjects(){
   dotPop->show();
   dotPop->update();
+  if(dotPop->allDotsDead() && showStats == false){
+    dotPop->calculateFitness();
+    showStats=true;
+    return;
+  }
+  return;
 }

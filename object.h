@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include "brain.h"
 
+class Zone;
 
 class Object{
   public:
@@ -8,9 +9,10 @@ class Object{
     Object(const Object& old_obj);
     ~Object();
     void display(SDL_Renderer* renderer);
-    SDL_Rect obj;
+    int distance(Object* other_obj);
 
   protected:
+    SDL_Rect obj;
 
 };
 
@@ -24,7 +26,9 @@ class Dot : public Object{
     void move();
     void limit(float (&velo)[2],int limit);
     void update();
-    void toggleGoal();
+    void setGoal(Zone* mainGoal);
+    float calculateFitness();
+    bool active();
 
   private:
     float vel[2];
@@ -32,6 +36,9 @@ class Dot : public Object{
     Brain* brain;
     bool dead;
     bool reachedGoal;
+    Zone* goal;
+    Zone* deathBlocks;
+    float fitness;
 };
 
 

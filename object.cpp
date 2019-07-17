@@ -23,6 +23,14 @@ void Object::display(SDL_Renderer* renderer){
   SDL_RenderFillRect(renderer,&obj);
 }//----------------------------------------
 
+int Object::distance(Object* other_obj){
+  int x_distance = abs(obj.x - other_obj->obj.x);
+  int y_distance = abs(obj.y - other_obj->obj.y);
+  return sqrt((x_distance*x_distance)+(y_distance*y_distance));
+}
+
+
+
 //------------------------------------------------------------------
 
 
@@ -34,6 +42,7 @@ Dot::Dot(){
   brain = new Brain(400);
   dead = false;
   reachedGoal = false;
+  fitness = 0;
 }
 
 Dot::~Dot(){
@@ -78,11 +87,36 @@ void Dot::update(){
     if(obj.x<2 || obj.y<2 || obj.x>798 || obj.y>598){ //Update with constants
       dead = true;
     }
+    else if(goal->collision(obj)==1){
+      reachedGoal = true;
+    }
   }
 }
 
-void Dot::toggleGoal(){
-  reachedGoal = true;
+
+void Dot::setGoal(Zone* mainGoal){
+  goal = mainGoal;
+}
+
+float Dot::calculateFitness(){
+  if(reachedGoal){
+    fitness = 10000/(brain->step * brain->step);
+  }
+  else{
+    float distance = this->distance(goal);
+    fitness = 1 / (distance * distance);
+  }
+  return fitness;
+}
+
+
+bool Dot::active(){
+  if(dead || reachedGoal){
+    return false;
+  }
+  else{
+    return true;
+  }
 }
 
 

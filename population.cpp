@@ -1,12 +1,15 @@
 #include "population.h"
 
 Population::Population(int size,SDL_Renderer* renderer){
-  DotList.resize(size);
   this->size = size;
   this->renderer = renderer;
-  goal = new Zone(400,500,10,10,1);
+  goal = new Zone(400,100,10,10,1);
   goal -> display(renderer);
-
+  //DeathZone
+  DotList.resize(size);
+  for(int i = 0;i<size;i++){
+    DotList[i].setGoal(goal);
+  }
 }
 
 void Population::show(){
@@ -19,8 +22,28 @@ void Population::show(){
 void Population::update(){
   for(int i = 0;i<size;i++){
     DotList[i].update();
-    if(goal -> collision(DotList[i].obj)==1){
-      DotList[i].toggleGoal();
+
+  }
+}
+
+
+void Population::calculateFitness(){
+  float highest = 0;
+  for(int i = 0;i<size;i++){
+    float temp = DotList[i].calculateFitness();
+    if(temp>highest){
+      highest = temp;
+    }
+    fitnessSum += temp;
+  }
+  std::cout << "Highest score: "<<highest << '\n';
+}
+
+bool Population::allDotsDead(){
+  for(int i = 0;i<size;i++){
+    if(DotList[i].active()){
+      return false;
     }
   }
+  return true;
 }

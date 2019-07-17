@@ -14,8 +14,8 @@ class Screen {
 
 
     private:
-      //std::vector <Dot> DotList;
       Population* dotPop;
       SDL_Renderer* renderer;
+      bool showStats;
 
 };
