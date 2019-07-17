@@ -79,3 +79,22 @@ void Dot::update(){
     }
   }
 }
+
+///------------------------------------------
+
+Zone::Zone(int x,int y,int w, int h,int iden){
+  obj.x = x; obj.y = y;
+  obj.w = w; obj.h = h;
+  identity = iden;
+}
+
+int Zone::collision(const SDL_Rect& dot){
+  if(SDL_HasIntersection(&dot,&obj)){
+    return identity;
+  }
+  return 0;
+}
+void Zone::display(SDL_Renderer* renderer){
+  SDL_SetRenderDrawColor(renderer,255,255,0,255);
+  SDL_RenderFillRect(renderer,&obj);
+}

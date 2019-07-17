@@ -34,5 +34,11 @@ class Dot : public Object{
 
 
 class Zone : public Object{
+  public:
+    Zone(int x,int y,int w,int h,int iden);
+    int collision(const SDL_Rect& dot);
+    void display(SDL_Renderer* renderer);
 
+  private:
+    int identity;
 };

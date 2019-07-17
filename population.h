@@ -8,6 +8,7 @@ class Population{
 
   private:
     std::vector <Dot> DotList;
+    Zone* goal;
     int size;
     SDL_Renderer* renderer;
 };
