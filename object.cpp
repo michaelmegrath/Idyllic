@@ -33,6 +33,7 @@ Dot::Dot(){
   acc[0] = 0; acc[1] = 0;
   brain = new Brain(400);
   dead = false;
+  reachedGoal = false;
 }
 
 Dot::~Dot(){
@@ -72,13 +73,18 @@ void Dot::move(){
 
 
 void Dot::update(){
-  if(!dead){
+  if(!dead && !reachedGoal){
     move();
     if(obj.x<2 || obj.y<2 || obj.x>798 || obj.y>598){ //Update with constants
       dead = true;
     }
   }
 }
+
+void Dot::toggleGoal(){
+  reachedGoal = true;
+}
+
 
 ///------------------------------------------
 

@@ -8,9 +8,9 @@ class Object{
     Object(const Object& old_obj);
     ~Object();
     void display(SDL_Renderer* renderer);
+    SDL_Rect obj;
 
   protected:
-    SDL_Rect obj;
 
 };
 
@@ -24,12 +24,14 @@ class Dot : public Object{
     void move();
     void limit(float (&velo)[2],int limit);
     void update();
+    void toggleGoal();
 
   private:
     float vel[2];
     float acc[2];
     Brain* brain;
     bool dead;
+    bool reachedGoal;
 };
 
 
