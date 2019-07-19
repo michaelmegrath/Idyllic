@@ -47,3 +47,21 @@ bool Population::allDotsDead(){
   }
   return true;
 }
+
+
+void Population::naturalSelection(){
+  std::vector <Dot> newDots;
+  newDots.resize(size);
+  for(int i = 0;i<size;i++){
+    
+  }
+
+
+}
+
+
+void Population::mutateChildren(){
+  for(int i = 0;i<size;i++){
+    DotList[i].mutate();
+  }
+}

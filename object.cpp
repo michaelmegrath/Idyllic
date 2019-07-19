@@ -15,6 +15,7 @@ Object::~Object(){
 //Copy Constructor-------------------------
 Object::Object(const Object& old_obj){
   obj = old_obj.obj;
+
 }//----------------------------------------
 
 //Display Object---------------------------
@@ -50,7 +51,29 @@ Dot::~Dot(){
 }
 
 Dot::Dot(const Dot& old_obj){
+  obj = old_obj.obj;
+  vel[0] = 0; vel[1] = 0;
+  acc[0] = 0; acc[1] = 0;
+  brain = old_obj.brain; ///THIS MAY COLLAPSE THE MATRIX
+  dead = false;
+  reachedGoal = false;
+  goal = old_obj.goal;
+  deathBlocks = old_obj.deathBlocks;
+  fitness = 0;
+  return;
+}
 
+Dot& Dot::operator=(const Dot &copy){
+  obj = copy.obj;
+  vel[0] = 0; vel[1] = 0;
+  acc[0] = 0; acc[1] = 0;
+  brain = copy.brain; ///THIS MAY COLLAPSE THE MATRIX
+  dead = false;
+  reachedGoal = false;
+  goal = copy.goal;
+  deathBlocks = copy.deathBlocks;
+  fitness = 0;
+  return *this;
 }
 
 void Dot::limit(float (&velo)[2],int limit){
@@ -117,6 +140,15 @@ bool Dot::active(){
   else{
     return true;
   }
+}
+
+void Dot::mutate(){
+  brain->mutate();
+}
+
+void Dot::makeChild(Dot* child){
+  child = new Dot();
+
 }
 
 

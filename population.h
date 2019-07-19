@@ -7,6 +7,8 @@ class Population{
     void update();
     void calculateFitness();
     bool allDotsDead();
+    void naturalSelection();
+    void mutateChildren();
 
   private:
     std::vector <Dot> DotList;

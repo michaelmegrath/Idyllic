@@ -23,12 +23,16 @@ class Dot : public Object{
     Dot();
     Dot(const Dot& old_obj);
     ~Dot();
+    Dot& operator= (const Dot &copy);
+
     void move();
     void limit(float (&velo)[2],int limit);
     void update();
     void setGoal(Zone* mainGoal);
     float calculateFitness();
     bool active();
+    void mutate();
+    void makeChild(Dot* child);
 
   private:
     float vel[2];
