@@ -148,7 +148,7 @@ void Dot::mutate(){
 
 void Dot::makeChild(Dot* child){
   child = new Dot();
-
+  child.brain = brain.clone();
 }
 
 

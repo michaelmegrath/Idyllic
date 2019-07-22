@@ -12,6 +12,7 @@ class Brain{
     Brain();
     Brain(const Brain& clone);
     ~Brain();
+    Brain& operator=(const Brain &copy);
     void randomize();
     float randmm(float min, float max);
     void mutate();

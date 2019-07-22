@@ -10,6 +10,18 @@ Brain::Brain(int size){
 
 }
 
+Brain& Brain::operator=(const Brain &copy){
+  step = 0;
+  size = copy.size;
+  directions = new double* [size];
+  for(int i = 0; i<size;i++){
+    directions[i] = new double[2];
+    directions[i][0] = copy.directions[i][0];
+    directions[i][1] = copy.directions[i][1];
+  }
+  return *this;
+}
+
 Brain::Brain(const Brain& clone){
   step = 0;
   size = clone.size;
