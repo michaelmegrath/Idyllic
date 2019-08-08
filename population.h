@@ -8,6 +8,8 @@ class Population{
     void calculateFitness();
     bool allDotsDead();
     void naturalSelection();
+    void selectParent(Dot* thing);
+    float randmm(float min, float max);
     void mutateChildren();
 
   private:
@@ -16,4 +18,5 @@ class Population{
     int size;
     SDL_Renderer* renderer;
     float fitnessSum;
+    int generation;
 };

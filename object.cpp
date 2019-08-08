@@ -85,7 +85,6 @@ void Dot::limit(float (&velo)[2],int limit){
       velo[0] = velo[0]*limit;
       velo[1] = velo[1]*limit;
     }
-
   }
 }
 
@@ -148,7 +147,7 @@ void Dot::mutate(){
 
 void Dot::makeChild(Dot* child){
   child = new Dot();
-  child.brain = brain.clone();
+  child->brain = brain;
 }
 
 

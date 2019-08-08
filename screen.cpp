@@ -34,6 +34,7 @@ void Screen::drawObjects(){
   dotPop->update();
   if(dotPop->allDotsDead() && showStats == false){
     dotPop->calculateFitness();
+    dotPop->naturalSelection();
     showStats=true;
     return;
   }
